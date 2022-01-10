@@ -1,9 +1,9 @@
-# action-gitconfig-insteadof
+# open-turo/action-git-auth@v1
 
-This GitHub Action provides a way to configure credentials for any utility that
-uses the git command, or any utility that uses the git command as a subprocess,
-or any utility that uses the git configuration file in its authentication and
-cloning.
+This [GitHub Action](https://docs.github.com/en/actions) provides a way to
+configure credentials for any utility that uses the git command, or any utility
+that uses the git command as a subprocess, or any utility that uses the git
+configuration file in its authentication and cloning.
 
 - [Usage](#usage)
   - [Basic](#basic)
@@ -56,54 +56,36 @@ This section describes how to develop the project.
 ### Contributing
 
 *TODO: Write this section.*
+- Open an issue
+- Create pull request
+- Ensure tests pass
+- Ensure code is rebased onto latest
+- Ensure dist/ is packaged
 
 ### Testing
 
-Use `npm test` to run tests locally.
+In order to run tests for local development, first run `npm install` to download
+dependencies, and then run `npm test` to run the test suite. This library uses
+`jest` for its test suite.
+
 ### Packaging
 
-*TODO: Rewrite this section.*
+In order for GitHub Actions to use this library, it must be packaged into the
+`dist/` directory. As part of any pull request which changes the library, this
+should be run.
 
-GitHub Actions will run the entry point from the action.yml. Packaging assembles
-the code into one file that can be checked in to Git, enabling fast and reliable
-execution and preventing the need to check in node_modules.
-
-Actions are run from GitHub repos.  Packaging the action will create a packaged
-action in the dist folder.
-
-Run prepare
+**Run prepare**:
 
 ```bash
-npm run prepare
-```
-
-Since the packaged index.js is run from the dist folder.
-
-```bash
-git add dist
+npm run prepare  # Generate the dist/ files
+git add dist/  # Add the dist/ files to the commit
 ```
 
 ### Releasing
 
-*TODO: Rewrite this section.*
+Releases are created according to the [Semantic Versioning](https://semver.org/)
+process. We also use the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+messages to determine what the release version is.
 
-Users shouldn't consume the action from master since that would be latest code
-and actions can break compatibility between major versions.
-
-Checkin to the v1 release branch
-
-```bash
-git checkout -b v1
-git commit -a -m "v1 release"
-```
-
-```bash
-git push origin v1
-```
-
-Note: We recommend using the `--license` option for ncc, which will create a
-license file for all of the production node modules used in your project.
-
-Your action is now published! :rocket:
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
+Once a PR has been merged, the repository maintainer is responsible for creating
+a new release, as well as moving the floating release tag to the new commit.
