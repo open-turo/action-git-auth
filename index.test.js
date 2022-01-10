@@ -6,6 +6,11 @@ const TOKEN = "example-token"
 const SERVER = "example.com"
 
 describe('run', () => {
+    afterEach(() => {
+        delete process.env['INPUT_TOKEN']
+        delete process.env['INPUT_SERVER']
+    })
+
     it('errors with no token', () => {
         return runIndex()
             .then(proc => {
