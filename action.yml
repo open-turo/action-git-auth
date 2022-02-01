@@ -1,5 +1,5 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: action-git-auth
+description: Injects git auth credentials into the host using .insteadOf rules in global .gitconfig
 inputs:
   token:
     description: GitHub personal access token
