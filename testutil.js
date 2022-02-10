@@ -22,7 +22,7 @@ function gitConfigList() {
 exports.gitConfigList = gitConfigList
 
 
-// run executes the post/remove task in a subshell. This does modify the underlying
+// runRemove executes the post/remove task in a subshell. This does modify the underlying
 // host's git config but there's no other way to test it.
 function runRemove() {
     const index = path.join(__dirname, 'remove.js')
@@ -38,7 +38,7 @@ function runRemove() {
 exports.runRemove = runRemove
 
 
-// runIncex executes main a tion in a subshell. This does modify the underlying
+// runIndex executes main action in a subshell. This does modify the underlying
 // git config.
 // XXX(shakefu): This is a bit of a hack, but only way to resolve the dependency
 // circle

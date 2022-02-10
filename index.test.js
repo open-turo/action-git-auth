@@ -1,7 +1,7 @@
 const process = require('process')
-const { gitConfigList, runIndex, runRemove } = require('./testutil')
+const { gitConfigList, runIndex } = require('./testutil')
 
-// These need to be sync'd in cleanup.test.js
+// These need to be sync'd in remove.test.js
 const TOKEN = "example-token"
 const SERVER = "example.com"
 
