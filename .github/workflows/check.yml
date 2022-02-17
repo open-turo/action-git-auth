@@ -11,28 +11,29 @@ on:
     branches:
       - main
     paths-ignore:
-      - '**.md'
+      - "**.md"
   pull_request:
     paths-ignore:
-      - '**.md'
+      - "**.md"
   workflow_dispatch:
 
 jobs:
-  dist:
+  build:
+    name: Build is up to date
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2.5.1
-        with:
-          node-version: 12.x
-      - name: Install dependencies
-        run: npm ci
-      - name: Rebuild the dist/ directory
-        run: npm run prepare
-      - name: Compare the expected and actual dist/ directories
+      - run: npm ci
+      - run: npm run prepare
+      - name: Compare the commited and actual dist/ builds
         run: |
           if [ "$(git diff --ignore-space-at-eol dist/ | wc -l)" -gt "0" ]; then
             echo "Detected uncommitted changes after build.  See status below:"
             git diff
+            echo ""
+            echo "please run:"
+            echo "    npm run prepare"
+            echo ""
+            echo "and commit the changes"
             exit 1
           fi
