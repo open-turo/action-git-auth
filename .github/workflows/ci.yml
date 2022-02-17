@@ -20,7 +20,7 @@ jobs:
       - uses: KeisukeYamashita/setup-release@v1.0.2
         with:
           repository: rhysd/actionlint
-      - uses: pre-commit/action@v2.0.0
+      - uses: pre-commit/action@v2.0.3
 
   # unit tests
   test:
