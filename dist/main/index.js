@@ -9544,17 +9544,17 @@ function wrappy (fn, cb) {
 /***/ ((__unused_webpack_module, exports) => {
 
 // make creates our URL fragments and rules for rewriting URLs for auth
-function make(token, server="github.com", prefix="") {
-    prefix = prefix.replace(/^\/+/, '')
-    return {
-        https_url: `https://${server}/${prefix}`,
-        ssh_url: `git@${server}:${prefix}`,
-        auth_url: `https://${token}:x-oauth-basic@${server}/${prefix}`,
-        section: `url.https://${token}:x-oauth-basic@${server}/${prefix}`,
-        auth_rule: `url.https://${token}:x-oauth-basic@${server}/${prefix}.insteadof`,
-    }
+function make(token, server = "github.com", prefix = "") {
+  prefix = prefix.replace(/^\/+/, "");
+  return {
+    https_url: `https://${server}/${prefix}`,
+    ssh_url: `git@${server}:${prefix}`,
+    auth_url: `https://${token}:x-oauth-basic@${server}/${prefix}`,
+    section: `url.https://${token}:x-oauth-basic@${server}/${prefix}`,
+    auth_rule: `url.https://${token}:x-oauth-basic@${server}/${prefix}.insteadof`,
+  };
 }
-exports.make = make
+exports.make = make;
 
 
 /***/ }),
@@ -9752,37 +9752,49 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-const core = __nccwpck_require__(2186)
-const exec = __nccwpck_require__(1514)
-const github = __nccwpck_require__(5438)
-const rules = __nccwpck_require__(9234)
+const core = __nccwpck_require__(2186);
+const exec = __nccwpck_require__(1514);
+const github = __nccwpck_require__(5438);
+const rules = __nccwpck_require__(9234);
 
 // action main method
 async function run() {
-    // Grab our inputs
-    const server = getServer()
-    const token = core.getInput('token', {required: true})
-    const prefix = core.getInput('prefix').replace(/^\/+/, '')
-    const conf = rules.make(token, server, prefix)
-    // Save the auth rule so we can remove it later
-    core.debug("Saving 'git_config_section' state")
-    core.saveState('git_config_section', conf.section)
-    core.info(`Rewriting '${conf.https_url}' and '${conf.ssh_url}' to use token authentication`)
-    // Use git itself to update the configuration
-    const silent = core.isDebug() ? {} : {silent: true}
-    await exec.exec('git', ['config', '--global', '--replace-all', conf.auth_rule, conf.https_url], silent)
-    await exec.exec('git', ['config', '--global', '--add', conf.auth_rule, conf.ssh_url], silent)
+  // Grab our inputs
+  const server = getServer();
+  const token = core.getInput("token", { required: true });
+  const prefix = core.getInput("prefix").replace(/^\/+/, "");
+  const conf = rules.make(token, server, prefix);
+  // Save the auth rule so we can remove it later
+  core.debug("Saving 'git_config_section' state");
+  core.saveState("git_config_section", conf.section);
+  core.info(
+    `Rewriting '${conf.https_url}' and '${conf.ssh_url}' to use token authentication`
+  );
+  // Use git itself to update the configuration
+  const silent = core.isDebug() ? {} : { silent: true };
+  await exec.exec(
+    "git",
+    ["config", "--global", "--replace-all", conf.auth_rule, conf.https_url],
+    silent
+  );
+  await exec.exec(
+    "git",
+    ["config", "--global", "--add", conf.auth_rule, conf.ssh_url],
+    silent
+  );
 }
 
 // getServer returns the server domain from the input secrets or github context
-function getServer(){
-    const server = core.getInput('server')
-    const serverUrl = (github.context && github.context.serverUrl &&
-        github.context.serverUrl.replace(/^\/\/|^.*?:(\/\/)?/, ''))
-    return (server || serverUrl).replace(/\/$/, '')
+function getServer() {
+  const server = core.getInput("server");
+  const serverUrl =
+    github.context &&
+    github.context.serverUrl &&
+    github.context.serverUrl.replace(/^\/\/|^.*?:(\/\/)?/, "");
+  return (server || serverUrl).replace(/\/$/, "");
 }
 
-run().catch(error => core.setFailed(error.message))
+run().catch((error) => core.setFailed(error.message));
 
 })();
 

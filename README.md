@@ -1,5 +1,7 @@
 # open-turo/action-git-auth@v1
 
+[![Coverage Status](https://coveralls.io/repos/github/open-turo/action-git-auth/badge.svg?branch=main)](https://coveralls.io/github/open-turo/action-git-auth?branch=main)
+
 This [GitHub Action](https://docs.github.com/en/actions) provides a way to
 configure credentials for any utility that uses the git command, or any utility
 that uses the git command as a subprocess, or any utility that uses the git
@@ -55,7 +57,8 @@ This section describes how to develop the project.
 
 ### Contributing
 
-*TODO: Write this section.*
+_TODO: Write this section._
+
 - Open an issue
 - Create pull request
 - Ensure tests pass
