@@ -1,8 +1,8 @@
 name: action-git-auth
 description: Injects git auth credentials into the host using .insteadOf rules in global .gitconfig
 inputs:
-  token:
-    description: GitHub personal access token
+  github-personal-access-token:
+    description: A GitHub personal access token that has appropriate access in the target GitHub repository.
     required: true
   prefix:
     description: URL path prefix to rewrite
