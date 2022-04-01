@@ -2870,7 +2870,7 @@ function _objectWithoutProperties(source, excluded) {
   return target;
 }
 
-const VERSION = "3.5.1";
+const VERSION = "3.6.0";
 
 const _excluded = ["authStrategy"];
 class Octokit {
@@ -4884,7 +4884,7 @@ var isPlainObject = __nccwpck_require__(3287);
 var nodeFetch = _interopDefault(__nccwpck_require__(467));
 var requestError = __nccwpck_require__(537);
 
-const VERSION = "5.6.2";
+const VERSION = "5.6.3";
 
 function getBufferResponse(response) {
   return response.arrayBuffer();
@@ -9787,15 +9787,19 @@ const rules = __nccwpck_require__(9234);
 async function run() {
   // Grab our inputs
   const server = getServer();
-  const token = core.getInput("token", { required: true });
+  const token = core.getInput("github-personal-access-token", {
+    required: true,
+  });
   const prefix = core.getInput("prefix").replace(/^\/+/, "");
   const conf = rules.make(token, server, prefix);
+
   // Save the auth rule so we can remove it later
   core.debug("Saving 'git_config_section' state");
   core.saveState("git_config_section", conf.section);
   core.info(
     `Rewriting '${conf.https_url}' and '${conf.ssh_url}' to use token authentication`
   );
+
   // Use git itself to update the configuration
   const silent = core.isDebug() ? {} : { silent: true };
   await exec.exec(
@@ -9810,7 +9814,7 @@ async function run() {
   );
 }
 
-// getServer returns the server domain from the input secrets or github context
+// getServer returns the server domain from the input secrets or GitHub context
 function getServer() {
   const server = core.getInput("server");
   const serverUrl =

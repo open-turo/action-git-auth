@@ -33,9 +33,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Authorize
-        uses: open-turo/action-git-auth@v1
+        uses: open-turo/action-git-auth@v2
         with:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          github-personal-access-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v2
 ```
@@ -44,7 +44,7 @@ jobs:
 
 The following inputs are available:
 
-- `token` (required) - The GitHub access token to use for authentication.
+- `github-personal-access-token` (required) - The GitHub access token to use for authentication.
 - `prefix` (optional) - The prefix to use for the URL path rewrite. This will
   often be an organization name if you wish to limit which repositories are
   accessible.

@@ -1,6 +1,10 @@
 const rules = require("./rules");
-const process = require("process");
-const { gitConfigList, runIndex, runRemove } = require("./testutil");
+const {
+  INPUT_TOKEN_ENV_VAR_NAME,
+  gitConfigList,
+  runIndex,
+  runRemove,
+} = require("./testutil");
 
 // These need to be sync'd in index.test.js
 const TOKEN = "example-token";
@@ -10,10 +14,11 @@ describe("cleanup", () => {
   beforeAll(() => {
     // Make sure we create our entries since we can't guarantee test suite
     // execution order
-    process.env["INPUT_TOKEN"] = TOKEN;
+    process.env[INPUT_TOKEN_ENV_VAR_NAME] = TOKEN;
     process.env["INPUT_SERVER"] = SERVER;
     return runIndex();
   });
+
   it("actually has the rules in place", () => {
     return gitConfigList().then((output) => {
       const rule = rules.make(TOKEN, SERVER).auth_rule;
