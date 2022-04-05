@@ -3,25 +3,6 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    [
-      "@semantic-release/npm",
-      {
-        "npmPublish": false,
-        "tarballDir": "pack"
-      }
-    ],
-    [
-      "@semantic-release/github",
-      {
-        "assets": "pack/*.tgz"
-      }
-    ],
-    [
-      "semantic-release-github-pullrequest",
-      {
-        "assets": ["package.json"],
-        "baseRef": "main"
-      }
-    ]
+    "@semantic-release/github"
   ]
 }
