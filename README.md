@@ -1,31 +1,17 @@
-# open-turo/action-git-auth@v1
-
-[![Coverage Status](https://coveralls.io/repos/github/open-turo/action-git-auth/badge.svg?branch=main)](https://coveralls.io/github/open-turo/action-git-auth?branch=main)
+# `open-turo/action-git-auth`
 
 This [GitHub Action](https://docs.github.com/en/actions) provides a way to
 configure credentials for any utility that uses the git command, or any utility
 that uses the git command as a subprocess, or any utility that uses the git
 configuration file in its authentication and cloning.
 
--   [Usage](#usage)
-    -   [Basic](#basic)
-    -   [Inputs](#inputs)
--   [Development](#development)
-    -   [Contributing](#contributing)
-    -   [Testing](#testing)
-    -   [Packaging](#packaging)
-    -   [Releasing](#releasing)
+[![Coverage Status](https://coveralls.io/repos/github/open-turo/action-git-auth/badge.svg?branch=main)](https://coveralls.io/github/open-turo/action-git-auth?branch=main)
 
 ## Usage
-
-This section describes how to use this GitHub Action.
-
-### Basic
 
 ```yaml
 name: ci
 on:
-    push:
     pull_request:
 
 jobs:
@@ -37,35 +23,23 @@ jobs:
               with:
                   github-personal-access-token:
                       ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-            - name: Checkout
-              uses: actions/checkout@v2
 ```
 
-### Inputs
+## Inputs
 
-The following inputs are available:
+| parameter                    | description                                                                                                                                    | required | default |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
+| github-personal-access-token | A GitHub personal access token that has appropriate access in the consumer GitHub repository that will be used for authentication with GitHub. | `true`   |         |
+| prefix                       | The prefix to use for the URL path rewrite. This will often be an organization name if you wish to limit which repositories are accessible.    | `false`  |         |
+| server                       | The name of the GitHub server to use, if not using hosted. This is useful if you are running this action against a GitHub Enterprise instance. | `false`  |         |
 
--   `github-personal-access-token` (required) - The GitHub access token to use
-    for authentication.
--   `prefix` (optional) - The prefix to use for the URL path rewrite. This will
-    often be an organization name if you wish to limit which repositories are
-    accessible.
--   `server` (optional) - The GitHub server to use. This is useful if you are
-    running this action against a GitHub Enterprise instance.
+## Runs
+
+This action is an `node12` action.
 
 ## Development
 
 This section describes how to develop the project.
-
-### Contributing
-
-_TODO: Write this section._
-
--   Open an issue
--   Create pull request
--   Ensure tests pass
--   Ensure code is rebased onto latest
--   Ensure dist/ is packaged
 
 ### Testing
 
@@ -95,3 +69,12 @@ to determine what the release version is.
 
 Once a PR has been merged, the repository maintainer is responsible for creating
 a new release, as well as moving the floating release tag to the new commit.
+
+## Get Help
+
+Please review Issues, post new Issues against this repository as needed.
+
+## Contributions
+
+Please see [here](https://github.com/open-turo/contributions) for guidelines on
+how to contribute to this project.
