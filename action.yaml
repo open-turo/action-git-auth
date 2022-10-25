@@ -25,7 +25,6 @@ inputs:
 runs:
   ## Injects git auth credentials into the host using .insteadOf rules in
   ## global .gitconfig.
-  using: "node12"
-  # pre: 'dist/index.js'
+  using: "node16"
   main: "dist/main/index.js"
   post: "dist/post/index.js"
