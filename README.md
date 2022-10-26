@@ -5,15 +5,24 @@ configure credentials for any utility that uses the git command, or any utility
 that uses the git command as a subprocess, or any utility that uses the git
 configuration file in its authentication and cloning.
 
+Authenticates using URL patterns that match https://_server_/_prefix_\*. If no
+matching URL exists, the action will not use the authentication credentials
+presented via the `github-personal-access-token` input.
+
+See
+[here](https://portal2portal.blogspot.com/2021/09/today-i-learned-more-about-git-config.html)
+for some additional background on git config as it relates to the problem this
+action is solving, and
+[here](https://git-scm.com/docs/git-config#Documentation/git-config.txt-urlltbasegtinsteadOf)
+for general reference on git config from the official git documentation.
+
 [![Coverage Status](https://coveralls.io/repos/github/open-turo/action-git-auth/badge.svg?branch=main)](https://coveralls.io/github/open-turo/action-git-auth?branch=main)
 
 ## Usage
 
-```yaml
-name: ci
-on:
-    pull_request:
+### Authenticate using default URL of https:///\*
 
+```yaml
 jobs:
     checkout:
         runs-on: ubuntu-latest
@@ -21,6 +30,37 @@ jobs:
             - name: Authorize
               uses: open-turo/action-git-auth@v2
               with:
+                  github-personal-access-token:
+                      ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+```
+
+### Authenticate using server specific URL of https://githubenterprise.examplecompany.com/*
+
+```yaml
+jobs:
+    checkout:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Authorize
+              uses: open-turo/action-git-auth@v2
+              with:
+                  server: githubenterprise.examplecompany.com
+                  github-personal-access-token:
+                      ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+```
+
+### Authenticate using server and prefix specific URL of https://git.example.com/github-org\*
+
+```yaml
+jobs:
+    checkout:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Authorize
+              uses: open-turo/action-git-auth@v2
+              with:
+                  server: git.example.com
+                  prefix: github-org
                   github-personal-access-token:
                       ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 ```

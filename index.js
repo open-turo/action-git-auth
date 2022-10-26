@@ -3,6 +3,9 @@ import exec from "@actions/exec"
 import github from "@actions/github"
 import * as rules from "./rules.js"
 
+// Authenticates by matching a URL of the form https://server/prefix*. If no matching URL is found, the provided
+// GitHub personal access token will not be used.
+
 // action main method
 async function run() {
     // Grab our inputs
@@ -34,7 +37,7 @@ async function run() {
     )
 }
 
-// getServer returns the server domain from the input secrets or GitHub context
+// getServer returns the server domain from the server input or GitHub context
 function getServer() {
     const server = core.getInput("server")
     const serverUrl =
