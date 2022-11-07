@@ -75,7 +75,7 @@ jobs:
 
 ## Runs
 
-This action is an `node12` action.
+This action is an `node16` action.
 
 ## Development
 
