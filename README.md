@@ -16,7 +16,15 @@ action is solving, and
 [here](https://git-scm.com/docs/git-config#Documentation/git-config.txt-urlltbasegtinsteadOf)
 for general reference on git config from the official git documentation.
 
+[![Release](https://img.shields.io/github/v/release/open-turo/action-git-auth)](https://github.com/open-turo/action-git-auth/releases/)
+[![Tests pass/fail](https://img.shields.io/github/workflow/status/open-turo/action-git-auth/CI)](https://github.com/open-turo/action-git-auth/actions/)
+[![License](https://img.shields.io/github/license/open-turo/action-git-auth)](./LICENSE)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/dwyl/esta/issues)
+![CI](https://github.com/open-turo/action-git-auth/actions/workflows/release.yaml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/open-turo/action-git-auth/badge.svg?branch=main)](https://coveralls.io/github/open-turo/action-git-auth?branch=main)
+[![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+[![Conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.2-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+[![Join us!](https://img.shields.io/badge/Turo-Join%20us%21-593CFB.svg)](https://turo.com/jobs)
 
 ## Usage
 
