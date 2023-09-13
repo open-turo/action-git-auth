@@ -30,7 +30,7 @@ describe("run", () => {
         return runIndex().then((proc) => {
             expect(proc.stderr.toString()).toBe("")
             expect(proc.stdout.toString()).toMatch(
-                /::save-state name=git_config_section::/,
+                /::debug::Saving 'git_config_section' state/,
             )
         })
     })
