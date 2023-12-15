@@ -1,9 +1,12 @@
 # `open-turo/action-git-auth`
 
-This [GitHub Action](https://docs.github.com/en/actions) provides a way to
-configure credentials for any utility that uses the git command, or any utility
-that uses the git command as a subprocess, or any utility that uses the git
-configuration file in its authentication and cloning.
+<!-- prettier-ignore-start -->
+<!-- action-docs-description -->
+## Description
+
+This [GitHub Action](https://docs.github.com/en/actions) provides a way to configure credentials for any utility that uses the git command, or any utility that uses the git command as a subprocess, or any utility that uses the git configuration file in its authentication and cloning.
+<!-- action-docs-description -->
+<!-- prettier-ignore-end -->
 
 Authenticates using URL patterns that match https://_server_/_prefix_\*. If no
 matching URL exists, the action will not use the authentication credentials
@@ -73,17 +76,27 @@ jobs:
                       ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 ```
 
+<!-- prettier-ignore-start -->
+<!-- action-docs-inputs -->
 ## Inputs
 
-| parameter                    | description                                                                                                                                    | required | default |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| github-personal-access-token | A GitHub personal access token that has appropriate access in the consumer GitHub repository that will be used for authentication with GitHub. | `true`   |         |
-| prefix                       | The prefix to use for the URL path rewrite. This will often be an organization name if you wish to limit which repositories are accessible.    | `false`  |         |
-| server                       | The name of the GitHub server to use, if not using hosted. This is useful if you are running this action against a GitHub Enterprise instance. | `false`  |         |
+| parameter | description | required | default |
+| --- | --- | --- | --- |
+| github-personal-access-token | A GitHub personal access token that has appropriate access in the consumer GitHub repository that will be used for authentication with GitHub. | `true` |  |
+| prefix | The prefix to use for the URL path rewrite. This will often be an organization name if you wish to limit which repositories are accessible. | `false` |  |
+| server | The name of the GitHub server to use, if not using hosted. This is useful if you are running this action against a GitHub Enterprise instance. | `false` |  |
+<!-- action-docs-inputs -->
 
+<!-- action-docs-outputs -->
+
+<!-- action-docs-outputs -->
+
+<!-- action-docs-runs -->
 ## Runs
 
-This action is an `node16` action.
+This action is a `node20` action.
+<!-- action-docs-runs -->
+<!-- prettier-ignore-end -->
 
 ## Development
 
