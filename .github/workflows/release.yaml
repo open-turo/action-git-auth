@@ -47,6 +47,3 @@ jobs:
         with:
           fetch-depth: 0
       - uses: open-turo/actions-gha/release@v2
-        with:
-          extra-plugins: |
-            semantic-release-github-pullrequest
