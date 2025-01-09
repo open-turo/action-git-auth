@@ -5,10 +5,11 @@ description:
   utility that uses the git command as a subprocess, or any utility that uses
   the git configuration file in its authentication and cloning.
 inputs:
-  github-personal-access-token:
+  github-token:
     description:
-      A GitHub personal access token that has appropriate access in the consumer
-      GitHub repository that will be used for authentication with GitHub.
+      A GitHub personal access token or GitHub application token which has
+      appropriate access in the consumer GitHub repository that will be used for
+      authentication with GitHub.
     required: true
   prefix:
     description:

@@ -1,7 +1,7 @@
 import core from "@actions/core"
 import exec from "@actions/exec"
 
-export const INPUT_TOKEN_ENV_VAR_NAME = "INPUT_GITHUB-PERSONAL-ACCESS-TOKEN"
+export const INPUT_TOKEN_ENV_VAR_NAME = "INPUT_GITHUB-TOKEN"
 
 // Run the `git config --list` command and return the output as a list of lines
 export function gitConfigList() {
