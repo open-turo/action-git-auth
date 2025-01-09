@@ -31413,9 +31413,9 @@ function make(token, server = "github.com", prefix = "") {
     return {
         https_url: `https://${server}/${prefix}`,
         ssh_url: `git@${server}:${prefix}`,
-        auth_url: `https://${token}:x-oauth-basic@${server}/${prefix}`,
-        section: `url.https://${token}:x-oauth-basic@${server}/${prefix}`,
-        auth_rule: `url.https://${token}:x-oauth-basic@${server}/${prefix}.insteadof`,
+        auth_url: `https://x-access-token:${token}@${server}/${prefix}`,
+        section: `url.https://x-access-token:${token}@${server}/${prefix}`,
+        auth_rule: `url.https://x-access-token:${token}@${server}/${prefix}.insteadof`,
     }
 }
 
@@ -31432,9 +31432,7 @@ function make(token, server = "github.com", prefix = "") {
 async function run() {
     // Grab our inputs
     const server = getServer()
-    const token = core.getInput("github-personal-access-token", {
-        required: true,
-    })
+    const token = core.getInput("github-token", { required: true })
     const prefix = core.getInput("prefix").replace(/^\/+/, "")
     const conf = make(token, server, prefix)
 

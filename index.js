@@ -10,9 +10,7 @@ import * as rules from "./rules.js"
 async function run() {
     // Grab our inputs
     const server = getServer()
-    const token = core.getInput("github-personal-access-token", {
-        required: true,
-    })
+    const token = core.getInput("github-token", { required: true })
     const prefix = core.getInput("prefix").replace(/^\/+/, "")
     const conf = rules.make(token, server, prefix)
 

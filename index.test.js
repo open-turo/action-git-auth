@@ -19,7 +19,7 @@ describe("run", () => {
                 expect(err.toString()).toMatch(/^Error: Command failed/)
                 expect(err.stderr.toString()).toBe("")
                 expect(err.stdout.toString()).toMatch(
-                    /::error::Input required and not supplied: github-personal-access-token/,
+                    /::error::Input required and not supplied: github-token/,
                 )
             })
     })
@@ -38,7 +38,7 @@ describe("run", () => {
     it("only creates the save state rules we want", () => {
         // This test depends on the external git/git config not being insanely goofy, but it should work
         return gitConfigList().then((output) => {
-            const rule = `^url.https://${TOKEN}:x-oauth-basic@${SERVER}/.instead[oO]f`
+            const rule = `^url.https://x-access-token:${TOKEN}@${SERVER}/.instead[oO]f`
             let lines = output.filter((line) =>
                 line.match(new RegExp(`${rule}=.*`)),
             )
