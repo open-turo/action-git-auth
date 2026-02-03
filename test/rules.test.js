@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest"
-import * as rules from "./rules.js"
+import * as rules from "../src/rules.js"
 
 const TOKEN = "example-token"
 const SERVER = "example.com"

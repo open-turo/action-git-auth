@@ -1,0 +1,153 @@
+import { describe, it, expect, vi, beforeEach } from "vitest"
+import { run, getServer } from "../src/main.js"
+
+vi.mock("@actions/core", () => ({
+    getInput: vi.fn(),
+    debug: vi.fn(),
+    saveState: vi.fn(),
+    info: vi.fn(),
+    isDebug: vi.fn(),
+    setFailed: vi.fn(),
+}))
+
+vi.mock("@actions/exec", () => ({
+    exec: vi.fn(),
+}))
+
+vi.mock("@actions/github", () => ({
+    context: {
+        serverUrl: "https://github.com",
+    },
+}))
+
+import * as core from "@actions/core"
+import * as exec from "@actions/exec"
+
+describe("main", () => {
+    beforeEach(() => {
+        vi.clearAllMocks()
+    })
+
+    describe("run", () => {
+        it("configures git auth with token", async () => {
+            core.getInput.mockImplementation((name) => {
+                if (name === "github-token") return "test-token"
+                if (name === "server") return "github.com"
+                if (name === "prefix") return ""
+                return ""
+            })
+            core.isDebug.mockReturnValue(false)
+            exec.exec.mockResolvedValue(0)
+
+            await run()
+
+            expect(core.getInput).toHaveBeenCalledWith("github-token", {
+                required: true,
+            })
+            expect(core.saveState).toHaveBeenCalledWith(
+                "git_config_section",
+                expect.stringContaining(
+                    "url.https://x-access-token:test-token@github.com/",
+                ),
+            )
+            expect(core.info).toHaveBeenCalledWith(
+                expect.stringContaining("Rewriting"),
+            )
+            expect(exec.exec).toHaveBeenCalledTimes(2)
+            expect(exec.exec).toHaveBeenCalledWith(
+                "git",
+                [
+                    "config",
+                    "--global",
+                    "--replace-all",
+                    expect.any(String),
+                    "https://github.com/",
+                ],
+                { silent: true },
+            )
+            expect(exec.exec).toHaveBeenCalledWith(
+                "git",
+                [
+                    "config",
+                    "--global",
+                    "--add",
+                    expect.any(String),
+                    "git@github.com:",
+                ],
+                { silent: true },
+            )
+        })
+
+        it("strips leading slashes from prefix", async () => {
+            core.getInput.mockImplementation((name) => {
+                if (name === "github-token") return "test-token"
+                if (name === "server") return "github.com"
+                if (name === "prefix") return "///org"
+                return ""
+            })
+            core.isDebug.mockReturnValue(false)
+            exec.exec.mockResolvedValue(0)
+
+            await run()
+
+            expect(exec.exec).toHaveBeenCalledWith(
+                "git",
+                [
+                    "config",
+                    "--global",
+                    "--replace-all",
+                    expect.any(String),
+                    "https://github.com/org",
+                ],
+                { silent: true },
+            )
+        })
+
+        it("does not silence git when debug is enabled", async () => {
+            core.getInput.mockImplementation((name) => {
+                if (name === "github-token") return "test-token"
+                if (name === "server") return "github.com"
+                if (name === "prefix") return ""
+                return ""
+            })
+            core.isDebug.mockReturnValue(true)
+            exec.exec.mockResolvedValue(0)
+
+            await run()
+
+            expect(exec.exec).toHaveBeenCalledWith("git", expect.any(Array), {})
+        })
+    })
+
+    describe("getServer", () => {
+        it("returns server input when provided", () => {
+            core.getInput.mockImplementation((name) => {
+                if (name === "server") return "custom.server.com"
+                return ""
+            })
+
+            const result = getServer()
+
+            expect(result).toBe("custom.server.com")
+        })
+
+        it("strips trailing slash from server", () => {
+            core.getInput.mockImplementation((name) => {
+                if (name === "server") return "custom.server.com/"
+                return ""
+            })
+
+            const result = getServer()
+
+            expect(result).toBe("custom.server.com")
+        })
+
+        it("falls back to github context serverUrl", () => {
+            core.getInput.mockReturnValue("")
+
+            const result = getServer()
+
+            expect(result).toBe("github.com")
+        })
+    })
+})
