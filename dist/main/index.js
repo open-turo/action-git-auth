@@ -28448,6 +28448,13 @@ module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("events");
 
 /***/ }),
 
+/***/ 9896:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs");
+
+/***/ }),
+
 /***/ 8611:
 /***/ ((module) => {
 
@@ -28606,6 +28613,20 @@ module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("node:worker_
 /***/ ((module) => {
 
 module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("node:zlib");
+
+/***/ }),
+
+/***/ 857:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("os");
+
+/***/ }),
+
+/***/ 6928:
+/***/ ((module) => {
+
+module.exports = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("path");
 
 /***/ }),
 
@@ -28805,50 +28826,26 @@ module.exports.xL = safeParse
 __webpack_unused_export__ = defaultContentType
 
 
-/***/ })
+/***/ }),
 
-/******/ });
-/************************************************************************/
-/******/ // The module cache
-/******/ var __webpack_module_cache__ = {};
-/******/ 
-/******/ // The require function
-/******/ function __nccwpck_require__(moduleId) {
-/******/ 	// Check if module is in cache
-/******/ 	var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 	if (cachedModule !== undefined) {
-/******/ 		return cachedModule.exports;
-/******/ 	}
-/******/ 	// Create a new module (and put it into the cache)
-/******/ 	var module = __webpack_module_cache__[moduleId] = {
-/******/ 		// no module.id needed
-/******/ 		// no module.loaded needed
-/******/ 		exports: {}
-/******/ 	};
-/******/ 
-/******/ 	// Execute the module function
-/******/ 	var threw = true;
-/******/ 	try {
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __nccwpck_require__);
-/******/ 		threw = false;
-/******/ 	} finally {
-/******/ 		if(threw) delete __webpack_module_cache__[moduleId];
-/******/ 	}
-/******/ 
-/******/ 	// Return the exports of the module
-/******/ 	return module.exports;
-/******/ }
-/******/ 
-/************************************************************************/
-/******/ /* webpack/runtime/compat */
-/******/ 
-/******/ if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = new URL('.', import.meta.url).pathname.slice(import.meta.url.match(/^file:\/\/\/\w:/) ? 1 : 0, -1) + "/";
-/******/ 
-/************************************************************************/
-var __webpack_exports__ = {};
+/***/ 7448:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
 
-;// CONCATENATED MODULE: external "os"
-const external_os_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("os");
+
+// EXPORTS
+__nccwpck_require__.d(__webpack_exports__, {
+  Yz: () => (/* binding */ core_debug),
+  V4: () => (/* binding */ getInput),
+  pq: () => (/* binding */ info),
+  _o: () => (/* binding */ isDebug),
+  LZ: () => (/* binding */ saveState),
+  C1: () => (/* binding */ setFailed)
+});
+
+// UNUSED EXPORTS: ExitCode, addPath, endGroup, error, exportVariable, getBooleanInput, getIDToken, getMultilineInput, getState, group, markdownSummary, notice, platform, setCommandEcho, setOutput, setSecret, startGroup, summary, toPlatformPath, toPosixPath, toWin32Path, warning
+
+// EXTERNAL MODULE: external "os"
+var external_os_ = __nccwpck_require__(857);
 ;// CONCATENATED MODULE: ./node_modules/@actions/core/lib/utils.js
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -28923,7 +28920,7 @@ function utils_toCommandProperties(annotationProperties) {
  */
 function command_issueCommand(command, properties, message) {
     const cmd = new Command(command, properties, message);
-    process.stdout.write(cmd.toString() + external_os_namespaceObject.EOL);
+    process.stdout.write(cmd.toString() + external_os_.EOL);
 }
 function command_issue(name, message = '') {
     command_issueCommand(name, {}, message);
@@ -28979,8 +28976,8 @@ function escapeProperty(s) {
 //# sourceMappingURL=command.js.map
 ;// CONCATENATED MODULE: external "crypto"
 const external_crypto_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("crypto");
-;// CONCATENATED MODULE: external "fs"
-const external_fs_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("fs");
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __nccwpck_require__(9896);
 ;// CONCATENATED MODULE: ./node_modules/@actions/core/lib/file-command.js
 // For internal use, subject to change.
 // We use any as a valid input type
@@ -28994,10 +28991,10 @@ function file_command_issueFileCommand(command, message) {
     if (!filePath) {
         throw new Error(`Unable to find environment variable for file command ${command}`);
     }
-    if (!external_fs_namespaceObject.existsSync(filePath)) {
+    if (!external_fs_.existsSync(filePath)) {
         throw new Error(`Missing file at path: ${filePath}`);
     }
-    external_fs_namespaceObject.appendFileSync(filePath, `${utils_toCommandValue(message)}${external_os_namespaceObject.EOL}`, {
+    external_fs_.appendFileSync(filePath, `${utils_toCommandValue(message)}${external_os_.EOL}`, {
         encoding: 'utf8'
     });
 }
@@ -29013,11 +29010,11 @@ function file_command_prepareKeyValueMessage(key, value) {
     if (convertedValue.includes(delimiter)) {
         throw new Error(`Unexpected input: value should not contain the delimiter "${delimiter}"`);
     }
-    return `${key}<<${delimiter}${external_os_namespaceObject.EOL}${convertedValue}${external_os_namespaceObject.EOL}${delimiter}`;
+    return `${key}<<${delimiter}${external_os_.EOL}${convertedValue}${external_os_.EOL}${delimiter}`;
 }
 //# sourceMappingURL=file-command.js.map
-;// CONCATENATED MODULE: external "path"
-const external_path_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("path");
+// EXTERNAL MODULE: external "path"
+var external_path_ = __nccwpck_require__(6928);
 // EXTERNAL MODULE: external "http"
 var external_http_ = __nccwpck_require__(8611);
 // EXTERNAL MODULE: external "https"
@@ -29976,7 +29973,7 @@ var summary_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _
 };
 
 
-const { access, appendFile, writeFile } = external_fs_namespaceObject.promises;
+const { access, appendFile, writeFile } = external_fs_.promises;
 const SUMMARY_ENV_VAR = 'GITHUB_STEP_SUMMARY';
 const SUMMARY_DOCS_URL = 'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
 class Summary {
@@ -29999,7 +29996,7 @@ class Summary {
                 throw new Error(`Unable to find environment variable for $${SUMMARY_ENV_VAR}. Check if your runtime environment supports job summaries.`);
             }
             try {
-                yield access(pathFromEnv, external_fs_namespaceObject.constants.R_OK | external_fs_namespaceObject.constants.W_OK);
+                yield access(pathFromEnv, external_fs_.constants.R_OK | external_fs_.constants.W_OK);
             }
             catch (_a) {
                 throw new Error(`Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`);
@@ -30095,7 +30092,7 @@ class Summary {
      * @returns {Summary} summary instance
      */
     addEOL() {
-        return this.addRaw(external_os_namespaceObject.EOL);
+        return this.addRaw(external_os_.EOL);
     }
     /**
      * Adds an HTML codeblock to the summary buffer
@@ -30279,16 +30276,10 @@ function toPlatformPath(pth) {
     return pth.replace(/[/\\]/g, path.sep);
 }
 //# sourceMappingURL=path-utils.js.map
-// EXTERNAL MODULE: external "string_decoder"
-var external_string_decoder_ = __nccwpck_require__(3193);
-// EXTERNAL MODULE: external "events"
-var external_events_ = __nccwpck_require__(4434);
-;// CONCATENATED MODULE: external "child_process"
-const external_child_process_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("child_process");
-// EXTERNAL MODULE: external "assert"
-var external_assert_ = __nccwpck_require__(2613);
-;// CONCATENATED MODULE: ./node_modules/@actions/io/lib/io-util.js
-var io_util_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+// EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js + 5 modules
+var lib_exec = __nccwpck_require__(2876);
+;// CONCATENATED MODULE: ./node_modules/@actions/core/lib/platform.js
+var platform_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -30299,7 +30290,418 @@ var io_util_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _
 };
 
 
-const { chmod, copyFile, lstat, mkdir, open: io_util_open, readdir, rename, rm, rmdir, stat, symlink, unlink } = external_fs_namespaceObject.promises;
+const getWindowsInfo = () => platform_awaiter(void 0, void 0, void 0, function* () {
+    const { stdout: version } = yield exec.getExecOutput('powershell -command "(Get-CimInstance -ClassName Win32_OperatingSystem).Version"', undefined, {
+        silent: true
+    });
+    const { stdout: name } = yield exec.getExecOutput('powershell -command "(Get-CimInstance -ClassName Win32_OperatingSystem).Caption"', undefined, {
+        silent: true
+    });
+    return {
+        name: name.trim(),
+        version: version.trim()
+    };
+});
+const getMacOsInfo = () => platform_awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b, _c, _d;
+    const { stdout } = yield exec.getExecOutput('sw_vers', undefined, {
+        silent: true
+    });
+    const version = (_b = (_a = stdout.match(/ProductVersion:\s*(.+)/)) === null || _a === void 0 ? void 0 : _a[1]) !== null && _b !== void 0 ? _b : '';
+    const name = (_d = (_c = stdout.match(/ProductName:\s*(.+)/)) === null || _c === void 0 ? void 0 : _c[1]) !== null && _d !== void 0 ? _d : '';
+    return {
+        name,
+        version
+    };
+});
+const getLinuxInfo = () => platform_awaiter(void 0, void 0, void 0, function* () {
+    const { stdout } = yield exec.getExecOutput('lsb_release', ['-i', '-r', '-s'], {
+        silent: true
+    });
+    const [name, version] = stdout.trim().split('\n');
+    return {
+        name,
+        version
+    };
+});
+const platform = external_os_.platform();
+const arch = external_os_.arch();
+const isWindows = platform === 'win32';
+const isMacOS = platform === 'darwin';
+const isLinux = platform === 'linux';
+function getDetails() {
+    return platform_awaiter(this, void 0, void 0, function* () {
+        return Object.assign(Object.assign({}, (yield (isWindows
+            ? getWindowsInfo()
+            : isMacOS
+                ? getMacOsInfo()
+                : getLinuxInfo()))), { platform,
+            arch,
+            isWindows,
+            isMacOS,
+            isLinux });
+    });
+}
+//# sourceMappingURL=platform.js.map
+;// CONCATENATED MODULE: ./node_modules/@actions/core/lib/core.js
+var core_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+
+
+/**
+ * The code to exit an action
+ */
+var ExitCode;
+(function (ExitCode) {
+    /**
+     * A code indicating that the action was successful
+     */
+    ExitCode[ExitCode["Success"] = 0] = "Success";
+    /**
+     * A code indicating that the action was a failure
+     */
+    ExitCode[ExitCode["Failure"] = 1] = "Failure";
+})(ExitCode || (ExitCode = {}));
+//-----------------------------------------------------------------------
+// Variables
+//-----------------------------------------------------------------------
+/**
+ * Sets env variable for this action and future actions in the job
+ * @param name the name of the variable to set
+ * @param val the value of the variable. Non-string values will be converted to a string via JSON.stringify
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function exportVariable(name, val) {
+    const convertedVal = toCommandValue(val);
+    process.env[name] = convertedVal;
+    const filePath = process.env['GITHUB_ENV'] || '';
+    if (filePath) {
+        return issueFileCommand('ENV', prepareKeyValueMessage(name, val));
+    }
+    issueCommand('set-env', { name }, convertedVal);
+}
+/**
+ * Registers a secret which will get masked from logs
+ *
+ * @param secret - Value of the secret to be masked
+ * @remarks
+ * This function instructs the Actions runner to mask the specified value in any
+ * logs produced during the workflow run. Once registered, the secret value will
+ * be replaced with asterisks (***) whenever it appears in console output, logs,
+ * or error messages.
+ *
+ * This is useful for protecting sensitive information such as:
+ * - API keys
+ * - Access tokens
+ * - Authentication credentials
+ * - URL parameters containing signatures (SAS tokens)
+ *
+ * Note that masking only affects future logs; any previous appearances of the
+ * secret in logs before calling this function will remain unmasked.
+ *
+ * @example
+ * ```typescript
+ * // Register an API token as a secret
+ * const apiToken = "abc123xyz456";
+ * setSecret(apiToken);
+ *
+ * // Now any logs containing this value will show *** instead
+ * console.log(`Using token: ${apiToken}`); // Outputs: "Using token: ***"
+ * ```
+ */
+function core_setSecret(secret) {
+    issueCommand('add-mask', {}, secret);
+}
+/**
+ * Prepends inputPath to the PATH (for this action and future actions)
+ * @param inputPath
+ */
+function addPath(inputPath) {
+    const filePath = process.env['GITHUB_PATH'] || '';
+    if (filePath) {
+        issueFileCommand('PATH', inputPath);
+    }
+    else {
+        issueCommand('add-path', {}, inputPath);
+    }
+    process.env['PATH'] = `${inputPath}${path.delimiter}${process.env['PATH']}`;
+}
+/**
+ * Gets the value of an input.
+ * Unless trimWhitespace is set to false in InputOptions, the value is also trimmed.
+ * Returns an empty string if the value is not defined.
+ *
+ * @param     name     name of the input to get
+ * @param     options  optional. See InputOptions.
+ * @returns   string
+ */
+function getInput(name, options) {
+    const val = process.env[`INPUT_${name.replace(/ /g, '_').toUpperCase()}`] || '';
+    if (options && options.required && !val) {
+        throw new Error(`Input required and not supplied: ${name}`);
+    }
+    if (options && options.trimWhitespace === false) {
+        return val;
+    }
+    return val.trim();
+}
+/**
+ * Gets the values of an multiline input.  Each value is also trimmed.
+ *
+ * @param     name     name of the input to get
+ * @param     options  optional. See InputOptions.
+ * @returns   string[]
+ *
+ */
+function getMultilineInput(name, options) {
+    const inputs = getInput(name, options)
+        .split('\n')
+        .filter(x => x !== '');
+    if (options && options.trimWhitespace === false) {
+        return inputs;
+    }
+    return inputs.map(input => input.trim());
+}
+/**
+ * Gets the input value of the boolean type in the YAML 1.2 "core schema" specification.
+ * Support boolean input list: `true | True | TRUE | false | False | FALSE` .
+ * The return value is also in boolean type.
+ * ref: https://yaml.org/spec/1.2/spec.html#id2804923
+ *
+ * @param     name     name of the input to get
+ * @param     options  optional. See InputOptions.
+ * @returns   boolean
+ */
+function getBooleanInput(name, options) {
+    const trueValue = ['true', 'True', 'TRUE'];
+    const falseValue = ['false', 'False', 'FALSE'];
+    const val = getInput(name, options);
+    if (trueValue.includes(val))
+        return true;
+    if (falseValue.includes(val))
+        return false;
+    throw new TypeError(`Input does not meet YAML 1.2 "Core Schema" specification: ${name}\n` +
+        `Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
+}
+/**
+ * Sets the value of an output.
+ *
+ * @param     name     name of the output to set
+ * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function setOutput(name, value) {
+    const filePath = process.env['GITHUB_OUTPUT'] || '';
+    if (filePath) {
+        return issueFileCommand('OUTPUT', prepareKeyValueMessage(name, value));
+    }
+    process.stdout.write(os.EOL);
+    issueCommand('set-output', { name }, toCommandValue(value));
+}
+/**
+ * Enables or disables the echoing of commands into stdout for the rest of the step.
+ * Echoing is disabled by default if ACTIONS_STEP_DEBUG is not set.
+ *
+ */
+function setCommandEcho(enabled) {
+    issue('echo', enabled ? 'on' : 'off');
+}
+//-----------------------------------------------------------------------
+// Results
+//-----------------------------------------------------------------------
+/**
+ * Sets the action status to failed.
+ * When the action exits it will be with an exit code of 1
+ * @param message add error issue message
+ */
+function setFailed(message) {
+    process.exitCode = ExitCode.Failure;
+    error(message);
+}
+//-----------------------------------------------------------------------
+// Logging Commands
+//-----------------------------------------------------------------------
+/**
+ * Gets whether Actions Step Debug is on or not
+ */
+function isDebug() {
+    return process.env['RUNNER_DEBUG'] === '1';
+}
+/**
+ * Writes debug message to user log
+ * @param message debug message
+ */
+function core_debug(message) {
+    command_issueCommand('debug', {}, message);
+}
+/**
+ * Adds an error issue
+ * @param message error issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
+ */
+function error(message, properties = {}) {
+    command_issueCommand('error', utils_toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+}
+/**
+ * Adds a warning issue
+ * @param message warning issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
+ */
+function warning(message, properties = {}) {
+    issueCommand('warning', toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+}
+/**
+ * Adds a notice issue
+ * @param message notice issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
+ */
+function notice(message, properties = {}) {
+    issueCommand('notice', toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+}
+/**
+ * Writes info to log with console.log.
+ * @param message info message
+ */
+function info(message) {
+    process.stdout.write(message + external_os_.EOL);
+}
+/**
+ * Begin an output group.
+ *
+ * Output until the next `groupEnd` will be foldable in this group
+ *
+ * @param name The name of the output group
+ */
+function startGroup(name) {
+    issue('group', name);
+}
+/**
+ * End an output group.
+ */
+function endGroup() {
+    issue('endgroup');
+}
+/**
+ * Wrap an asynchronous function call in a group.
+ *
+ * Returns the same type as the function itself.
+ *
+ * @param name The name of the group
+ * @param fn The function to wrap in the group
+ */
+function group(name, fn) {
+    return core_awaiter(this, void 0, void 0, function* () {
+        startGroup(name);
+        let result;
+        try {
+            result = yield fn();
+        }
+        finally {
+            endGroup();
+        }
+        return result;
+    });
+}
+//-----------------------------------------------------------------------
+// Wrapper action state
+//-----------------------------------------------------------------------
+/**
+ * Saves state for current action, the state can only be retrieved by this action's post job execution.
+ *
+ * @param     name     name of the state to store
+ * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function saveState(name, value) {
+    const filePath = process.env['GITHUB_STATE'] || '';
+    if (filePath) {
+        return file_command_issueFileCommand('STATE', file_command_prepareKeyValueMessage(name, value));
+    }
+    command_issueCommand('save-state', { name }, utils_toCommandValue(value));
+}
+/**
+ * Gets the value of an state set by this action's main execution.
+ *
+ * @param     name     name of the state to get
+ * @returns   string
+ */
+function getState(name) {
+    return process.env[`STATE_${name}`] || '';
+}
+function getIDToken(aud) {
+    return core_awaiter(this, void 0, void 0, function* () {
+        return yield OidcClient.getIDToken(aud);
+    });
+}
+/**
+ * Summary exports
+ */
+
+/**
+ * @deprecated use core.summary
+ */
+
+/**
+ * Path exports
+ */
+
+/**
+ * Platform utilities exports
+ */
+
+//# sourceMappingURL=core.js.map
+
+/***/ }),
+
+/***/ 2876:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
+
+
+// EXPORTS
+__nccwpck_require__.d(__webpack_exports__, {
+  m: () => (/* binding */ exec)
+});
+
+// UNUSED EXPORTS: getExecOutput
+
+// EXTERNAL MODULE: external "string_decoder"
+var external_string_decoder_ = __nccwpck_require__(3193);
+// EXTERNAL MODULE: external "os"
+var external_os_ = __nccwpck_require__(857);
+// EXTERNAL MODULE: external "events"
+var external_events_ = __nccwpck_require__(4434);
+;// CONCATENATED MODULE: external "child_process"
+const external_child_process_namespaceObject = __WEBPACK_EXTERNAL_createRequire(import.meta.url)("child_process");
+// EXTERNAL MODULE: external "path"
+var external_path_ = __nccwpck_require__(6928);
+// EXTERNAL MODULE: external "assert"
+var external_assert_ = __nccwpck_require__(2613);
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __nccwpck_require__(9896);
+;// CONCATENATED MODULE: ./node_modules/@actions/io/lib/io-util.js
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+const { chmod, copyFile, lstat, mkdir, open: io_util_open, readdir, rename, rm, rmdir, stat, symlink, unlink } = external_fs_.promises;
 // export const {open} = 'fs'
 const IS_WINDOWS = process.platform === 'win32';
 /**
@@ -30314,7 +30716,7 @@ const IS_WINDOWS = process.platform === 'win32';
  * backslash to all junction results on Windows.
  */
 function readlink(fsPath) {
-    return io_util_awaiter(this, void 0, void 0, function* () {
+    return __awaiter(this, void 0, void 0, function* () {
         const result = yield fs.promises.readlink(fsPath);
         // On Windows, restore Node 20 behavior: add trailing backslash to all results
         // since junctions on Windows are always directory links
@@ -30326,9 +30728,9 @@ function readlink(fsPath) {
 }
 // See https://github.com/nodejs/node/blob/d0153aee367422d0858105abec186da4dff0a0c5/deps/uv/include/uv/win.h#L691
 const UV_FS_O_EXLOCK = 0x10000000;
-const READONLY = external_fs_namespaceObject.constants.O_RDONLY;
+const READONLY = external_fs_.constants.O_RDONLY;
 function exists(fsPath) {
-    return io_util_awaiter(this, void 0, void 0, function* () {
+    return __awaiter(this, void 0, void 0, function* () {
         try {
             yield stat(fsPath);
         }
@@ -30342,7 +30744,7 @@ function exists(fsPath) {
     });
 }
 function isDirectory(fsPath_1) {
-    return io_util_awaiter(this, arguments, void 0, function* (fsPath, useStat = false) {
+    return __awaiter(this, arguments, void 0, function* (fsPath, useStat = false) {
         const stats = useStat ? yield stat(fsPath) : yield lstat(fsPath);
         return stats.isDirectory();
     });
@@ -30369,7 +30771,7 @@ function isRooted(p) {
  * @return if file exists and is executable, returns the file path. otherwise empty string.
  */
 function tryGetExecutablePath(filePath, extensions) {
-    return io_util_awaiter(this, void 0, void 0, function* () {
+    return __awaiter(this, void 0, void 0, function* () {
         let stats = undefined;
         try {
             // test file exists
@@ -30384,7 +30786,7 @@ function tryGetExecutablePath(filePath, extensions) {
         if (stats && stats.isFile()) {
             if (IS_WINDOWS) {
                 // on Windows, test for valid extension
-                const upperExt = external_path_namespaceObject.extname(filePath).toUpperCase();
+                const upperExt = external_path_.extname(filePath).toUpperCase();
                 if (extensions.some(validExt => validExt.toUpperCase() === upperExt)) {
                     return filePath;
                 }
@@ -30413,11 +30815,11 @@ function tryGetExecutablePath(filePath, extensions) {
                 if (IS_WINDOWS) {
                     // preserve the case of the actual file (since an extension was appended)
                     try {
-                        const directory = external_path_namespaceObject.dirname(filePath);
-                        const upperName = external_path_namespaceObject.basename(filePath).toUpperCase();
+                        const directory = external_path_.dirname(filePath);
+                        const upperName = external_path_.basename(filePath).toUpperCase();
                         for (const actualName of yield readdir(directory)) {
                             if (upperName === actualName.toUpperCase()) {
-                                filePath = external_path_namespaceObject.join(directory, actualName);
+                                filePath = external_path_.join(directory, actualName);
                                 break;
                             }
                         }
@@ -30637,7 +31039,7 @@ function findInPath(tool) {
         // build the list of extensions to try
         const extensions = [];
         if (IS_WINDOWS && process.env['PATHEXT']) {
-            for (const extension of process.env['PATHEXT'].split(external_path_namespaceObject.delimiter)) {
+            for (const extension of process.env['PATHEXT'].split(external_path_.delimiter)) {
                 if (extension) {
                     extensions.push(extension);
                 }
@@ -30652,7 +31054,7 @@ function findInPath(tool) {
             return [];
         }
         // if any path separators, return empty
-        if (tool.includes(external_path_namespaceObject.sep)) {
+        if (tool.includes(external_path_.sep)) {
             return [];
         }
         // build the list of directories
@@ -30663,7 +31065,7 @@ function findInPath(tool) {
         // across platforms.
         const directories = [];
         if (process.env.PATH) {
-            for (const p of process.env.PATH.split(external_path_namespaceObject.delimiter)) {
+            for (const p of process.env.PATH.split(external_path_.delimiter)) {
                 if (p) {
                     directories.push(p);
                 }
@@ -30672,7 +31074,7 @@ function findInPath(tool) {
         // find all matches
         const matches = [];
         for (const directory of directories) {
-            const filePath = yield tryGetExecutablePath(external_path_namespaceObject.join(directory, tool), extensions);
+            const filePath = yield tryGetExecutablePath(external_path_.join(directory, tool), extensions);
             if (filePath) {
                 matches.push(filePath);
             }
@@ -30819,13 +31221,13 @@ class ToolRunner extends external_events_.EventEmitter {
     _processLineBuffer(data, strBuffer, onLine) {
         try {
             let s = strBuffer + data.toString();
-            let n = s.indexOf(external_os_namespaceObject.EOL);
+            let n = s.indexOf(external_os_.EOL);
             while (n > -1) {
                 const line = s.substring(0, n);
                 onLine(line);
                 // the rest of the string ...
-                s = s.substring(n + external_os_namespaceObject.EOL.length);
-                n = s.indexOf(external_os_namespaceObject.EOL);
+                s = s.substring(n + external_os_.EOL.length);
+                n = s.indexOf(external_os_.EOL);
             }
             return s;
         }
@@ -31103,7 +31505,7 @@ class ToolRunner extends external_events_.EventEmitter {
                 (this.toolPath.includes('/') ||
                     (toolrunner_IS_WINDOWS && this.toolPath.includes('\\')))) {
                 // prefer options.cwd if it is specified, however options.cwd may also need to be rooted
-                this.toolPath = external_path_namespaceObject.resolve(process.cwd(), this.options.cwd || process.cwd(), this.toolPath);
+                this.toolPath = external_path_.resolve(process.cwd(), this.options.cwd || process.cwd(), this.toolPath);
             }
             // if the tool is only a file name, then resolve it from the PATH
             // otherwise verify it exists (add extension on Windows if necessary)
@@ -31116,7 +31518,7 @@ class ToolRunner extends external_events_.EventEmitter {
                 }
                 const optionsNonNull = this._cloneExecOptions(this.options);
                 if (!optionsNonNull.silent && optionsNonNull.outStream) {
-                    optionsNonNull.outStream.write(this._getCommandString(optionsNonNull) + external_os_namespaceObject.EOL);
+                    optionsNonNull.outStream.write(this._getCommandString(optionsNonNull) + external_os_.EOL);
                 }
                 const state = new ExecState(optionsNonNull, this.toolPath);
                 state.on('debug', (message) => {
@@ -31351,7 +31753,7 @@ var exec_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arg
  * @param     options            optional exec options.  See ExecOptions
  * @returns   Promise<number>    exit code
  */
-function exec_exec(commandLine, args, options) {
+function exec(commandLine, args, options) {
     return exec_awaiter(this, void 0, void 0, function* () {
         const commandArgs = argStringToArray(commandLine);
         if (commandArgs.length === 0) {
@@ -31397,7 +31799,7 @@ function getExecOutput(commandLine, args, options) {
             }
         };
         const listeners = Object.assign(Object.assign({}, options === null || options === void 0 ? void 0 : options.listeners), { stdout: stdOutListener, stderr: stdErrListener });
-        const exitCode = yield exec_exec(commandLine, args, Object.assign(Object.assign({}, options), { listeners }));
+        const exitCode = yield exec(commandLine, args, Object.assign(Object.assign({}, options), { listeners }));
         //flush any remaining characters
         stdout += stdoutDecoder.end();
         stderr += stderrDecoder.end();
@@ -31409,389 +31811,49 @@ function getExecOutput(commandLine, args, options) {
     });
 }
 //# sourceMappingURL=exec.js.map
-;// CONCATENATED MODULE: ./node_modules/@actions/core/lib/platform.js
-var platform_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
+
+/***/ }),
+
+/***/ 9722:
+/***/ ((__webpack_module__, __unused_webpack___webpack_exports__, __nccwpck_require__) => {
+
+__nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(7448);
+/* harmony import */ var _main_js__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(7094);
 
 
-const getWindowsInfo = () => platform_awaiter(void 0, void 0, void 0, function* () {
-    const { stdout: version } = yield exec.getExecOutput('powershell -command "(Get-CimInstance -ClassName Win32_OperatingSystem).Version"', undefined, {
-        silent: true
-    });
-    const { stdout: name } = yield exec.getExecOutput('powershell -command "(Get-CimInstance -ClassName Win32_OperatingSystem).Caption"', undefined, {
-        silent: true
-    });
-    return {
-        name: name.trim(),
-        version: version.trim()
-    };
+
+
+try {
+    await (0,_main_js__WEBPACK_IMPORTED_MODULE_1__/* .run */ .e)()
+} catch (error) {
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__/* .setFailed */ .C1(error.message)
+}
+
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } }, 1);
+
+/***/ }),
+
+/***/ 7094:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __nccwpck_require__) => {
+
+
+// EXPORTS
+__nccwpck_require__.d(__webpack_exports__, {
+  e: () => (/* binding */ run)
 });
-const getMacOsInfo = () => platform_awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b, _c, _d;
-    const { stdout } = yield exec.getExecOutput('sw_vers', undefined, {
-        silent: true
-    });
-    const version = (_b = (_a = stdout.match(/ProductVersion:\s*(.+)/)) === null || _a === void 0 ? void 0 : _a[1]) !== null && _b !== void 0 ? _b : '';
-    const name = (_d = (_c = stdout.match(/ProductName:\s*(.+)/)) === null || _c === void 0 ? void 0 : _c[1]) !== null && _d !== void 0 ? _d : '';
-    return {
-        name,
-        version
-    };
-});
-const getLinuxInfo = () => platform_awaiter(void 0, void 0, void 0, function* () {
-    const { stdout } = yield exec.getExecOutput('lsb_release', ['-i', '-r', '-s'], {
-        silent: true
-    });
-    const [name, version] = stdout.trim().split('\n');
-    return {
-        name,
-        version
-    };
-});
-const platform = external_os_namespaceObject.platform();
-const arch = external_os_namespaceObject.arch();
-const isWindows = platform === 'win32';
-const isMacOS = platform === 'darwin';
-const isLinux = platform === 'linux';
-function getDetails() {
-    return platform_awaiter(this, void 0, void 0, function* () {
-        return Object.assign(Object.assign({}, (yield (isWindows
-            ? getWindowsInfo()
-            : isMacOS
-                ? getMacOsInfo()
-                : getLinuxInfo()))), { platform,
-            arch,
-            isWindows,
-            isMacOS,
-            isLinux });
-    });
-}
-//# sourceMappingURL=platform.js.map
-;// CONCATENATED MODULE: ./node_modules/@actions/core/lib/core.js
-var core_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 
+// UNUSED EXPORTS: getServer
 
-
-
-
-
-/**
- * The code to exit an action
- */
-var ExitCode;
-(function (ExitCode) {
-    /**
-     * A code indicating that the action was successful
-     */
-    ExitCode[ExitCode["Success"] = 0] = "Success";
-    /**
-     * A code indicating that the action was a failure
-     */
-    ExitCode[ExitCode["Failure"] = 1] = "Failure";
-})(ExitCode || (ExitCode = {}));
-//-----------------------------------------------------------------------
-// Variables
-//-----------------------------------------------------------------------
-/**
- * Sets env variable for this action and future actions in the job
- * @param name the name of the variable to set
- * @param val the value of the variable. Non-string values will be converted to a string via JSON.stringify
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function exportVariable(name, val) {
-    const convertedVal = toCommandValue(val);
-    process.env[name] = convertedVal;
-    const filePath = process.env['GITHUB_ENV'] || '';
-    if (filePath) {
-        return issueFileCommand('ENV', prepareKeyValueMessage(name, val));
-    }
-    issueCommand('set-env', { name }, convertedVal);
-}
-/**
- * Registers a secret which will get masked from logs
- *
- * @param secret - Value of the secret to be masked
- * @remarks
- * This function instructs the Actions runner to mask the specified value in any
- * logs produced during the workflow run. Once registered, the secret value will
- * be replaced with asterisks (***) whenever it appears in console output, logs,
- * or error messages.
- *
- * This is useful for protecting sensitive information such as:
- * - API keys
- * - Access tokens
- * - Authentication credentials
- * - URL parameters containing signatures (SAS tokens)
- *
- * Note that masking only affects future logs; any previous appearances of the
- * secret in logs before calling this function will remain unmasked.
- *
- * @example
- * ```typescript
- * // Register an API token as a secret
- * const apiToken = "abc123xyz456";
- * setSecret(apiToken);
- *
- * // Now any logs containing this value will show *** instead
- * console.log(`Using token: ${apiToken}`); // Outputs: "Using token: ***"
- * ```
- */
-function core_setSecret(secret) {
-    issueCommand('add-mask', {}, secret);
-}
-/**
- * Prepends inputPath to the PATH (for this action and future actions)
- * @param inputPath
- */
-function addPath(inputPath) {
-    const filePath = process.env['GITHUB_PATH'] || '';
-    if (filePath) {
-        issueFileCommand('PATH', inputPath);
-    }
-    else {
-        issueCommand('add-path', {}, inputPath);
-    }
-    process.env['PATH'] = `${inputPath}${path.delimiter}${process.env['PATH']}`;
-}
-/**
- * Gets the value of an input.
- * Unless trimWhitespace is set to false in InputOptions, the value is also trimmed.
- * Returns an empty string if the value is not defined.
- *
- * @param     name     name of the input to get
- * @param     options  optional. See InputOptions.
- * @returns   string
- */
-function getInput(name, options) {
-    const val = process.env[`INPUT_${name.replace(/ /g, '_').toUpperCase()}`] || '';
-    if (options && options.required && !val) {
-        throw new Error(`Input required and not supplied: ${name}`);
-    }
-    if (options && options.trimWhitespace === false) {
-        return val;
-    }
-    return val.trim();
-}
-/**
- * Gets the values of an multiline input.  Each value is also trimmed.
- *
- * @param     name     name of the input to get
- * @param     options  optional. See InputOptions.
- * @returns   string[]
- *
- */
-function getMultilineInput(name, options) {
-    const inputs = getInput(name, options)
-        .split('\n')
-        .filter(x => x !== '');
-    if (options && options.trimWhitespace === false) {
-        return inputs;
-    }
-    return inputs.map(input => input.trim());
-}
-/**
- * Gets the input value of the boolean type in the YAML 1.2 "core schema" specification.
- * Support boolean input list: `true | True | TRUE | false | False | FALSE` .
- * The return value is also in boolean type.
- * ref: https://yaml.org/spec/1.2/spec.html#id2804923
- *
- * @param     name     name of the input to get
- * @param     options  optional. See InputOptions.
- * @returns   boolean
- */
-function getBooleanInput(name, options) {
-    const trueValue = ['true', 'True', 'TRUE'];
-    const falseValue = ['false', 'False', 'FALSE'];
-    const val = getInput(name, options);
-    if (trueValue.includes(val))
-        return true;
-    if (falseValue.includes(val))
-        return false;
-    throw new TypeError(`Input does not meet YAML 1.2 "Core Schema" specification: ${name}\n` +
-        `Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
-}
-/**
- * Sets the value of an output.
- *
- * @param     name     name of the output to set
- * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function setOutput(name, value) {
-    const filePath = process.env['GITHUB_OUTPUT'] || '';
-    if (filePath) {
-        return issueFileCommand('OUTPUT', prepareKeyValueMessage(name, value));
-    }
-    process.stdout.write(os.EOL);
-    issueCommand('set-output', { name }, toCommandValue(value));
-}
-/**
- * Enables or disables the echoing of commands into stdout for the rest of the step.
- * Echoing is disabled by default if ACTIONS_STEP_DEBUG is not set.
- *
- */
-function setCommandEcho(enabled) {
-    issue('echo', enabled ? 'on' : 'off');
-}
-//-----------------------------------------------------------------------
-// Results
-//-----------------------------------------------------------------------
-/**
- * Sets the action status to failed.
- * When the action exits it will be with an exit code of 1
- * @param message add error issue message
- */
-function setFailed(message) {
-    process.exitCode = ExitCode.Failure;
-    error(message);
-}
-//-----------------------------------------------------------------------
-// Logging Commands
-//-----------------------------------------------------------------------
-/**
- * Gets whether Actions Step Debug is on or not
- */
-function isDebug() {
-    return process.env['RUNNER_DEBUG'] === '1';
-}
-/**
- * Writes debug message to user log
- * @param message debug message
- */
-function core_debug(message) {
-    command_issueCommand('debug', {}, message);
-}
-/**
- * Adds an error issue
- * @param message error issue message. Errors will be converted to string via toString()
- * @param properties optional properties to add to the annotation.
- */
-function error(message, properties = {}) {
-    command_issueCommand('error', utils_toCommandProperties(properties), message instanceof Error ? message.toString() : message);
-}
-/**
- * Adds a warning issue
- * @param message warning issue message. Errors will be converted to string via toString()
- * @param properties optional properties to add to the annotation.
- */
-function warning(message, properties = {}) {
-    issueCommand('warning', toCommandProperties(properties), message instanceof Error ? message.toString() : message);
-}
-/**
- * Adds a notice issue
- * @param message notice issue message. Errors will be converted to string via toString()
- * @param properties optional properties to add to the annotation.
- */
-function notice(message, properties = {}) {
-    issueCommand('notice', toCommandProperties(properties), message instanceof Error ? message.toString() : message);
-}
-/**
- * Writes info to log with console.log.
- * @param message info message
- */
-function info(message) {
-    process.stdout.write(message + external_os_namespaceObject.EOL);
-}
-/**
- * Begin an output group.
- *
- * Output until the next `groupEnd` will be foldable in this group
- *
- * @param name The name of the output group
- */
-function startGroup(name) {
-    issue('group', name);
-}
-/**
- * End an output group.
- */
-function endGroup() {
-    issue('endgroup');
-}
-/**
- * Wrap an asynchronous function call in a group.
- *
- * Returns the same type as the function itself.
- *
- * @param name The name of the group
- * @param fn The function to wrap in the group
- */
-function group(name, fn) {
-    return core_awaiter(this, void 0, void 0, function* () {
-        startGroup(name);
-        let result;
-        try {
-            result = yield fn();
-        }
-        finally {
-            endGroup();
-        }
-        return result;
-    });
-}
-//-----------------------------------------------------------------------
-// Wrapper action state
-//-----------------------------------------------------------------------
-/**
- * Saves state for current action, the state can only be retrieved by this action's post job execution.
- *
- * @param     name     name of the state to store
- * @param     value    value to store. Non-string values will be converted to a string via JSON.stringify
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function saveState(name, value) {
-    const filePath = process.env['GITHUB_STATE'] || '';
-    if (filePath) {
-        return file_command_issueFileCommand('STATE', file_command_prepareKeyValueMessage(name, value));
-    }
-    command_issueCommand('save-state', { name }, utils_toCommandValue(value));
-}
-/**
- * Gets the value of an state set by this action's main execution.
- *
- * @param     name     name of the state to get
- * @returns   string
- */
-function getState(name) {
-    return process.env[`STATE_${name}`] || '';
-}
-function getIDToken(aud) {
-    return core_awaiter(this, void 0, void 0, function* () {
-        return yield OidcClient.getIDToken(aud);
-    });
-}
-/**
- * Summary exports
- */
-
-/**
- * @deprecated use core.summary
- */
-
-/**
- * Path exports
- */
-
-/**
- * Platform utilities exports
- */
-
-//# sourceMappingURL=core.js.map
+// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js + 11 modules
+var core = __nccwpck_require__(7448);
+// EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js + 5 modules
+var exec = __nccwpck_require__(2876);
+// EXTERNAL MODULE: external "fs"
+var external_fs_ = __nccwpck_require__(9896);
+// EXTERNAL MODULE: external "os"
+var external_os_ = __nccwpck_require__(857);
 ;// CONCATENATED MODULE: ./node_modules/@actions/github/lib/context.js
 
 
@@ -31803,12 +31865,12 @@ class Context {
         var _a, _b, _c;
         this.payload = {};
         if (process.env.GITHUB_EVENT_PATH) {
-            if ((0,external_fs_namespaceObject.existsSync)(process.env.GITHUB_EVENT_PATH)) {
-                this.payload = JSON.parse((0,external_fs_namespaceObject.readFileSync)(process.env.GITHUB_EVENT_PATH, { encoding: 'utf8' }));
+            if ((0,external_fs_.existsSync)(process.env.GITHUB_EVENT_PATH)) {
+                this.payload = JSON.parse((0,external_fs_.readFileSync)(process.env.GITHUB_EVENT_PATH, { encoding: 'utf8' }));
             }
             else {
                 const path = process.env.GITHUB_EVENT_PATH;
-                process.stdout.write(`GITHUB_EVENT_PATH ${path} does not exist${external_os_namespaceObject.EOL}`);
+                process.stdout.write(`GITHUB_EVENT_PATH ${path} does not exist${external_os_.EOL}`);
             }
         }
         this.eventName = process.env.GITHUB_EVENT_NAME;
@@ -31847,8 +31909,10 @@ class Context {
 //# sourceMappingURL=context.js.map
 // EXTERNAL MODULE: ./node_modules/@actions/http-client/lib/index.js
 var lib = __nccwpck_require__(4844);
+// EXTERNAL MODULE: ./node_modules/undici/index.js
+var undici = __nccwpck_require__(6752);
 ;// CONCATENATED MODULE: ./node_modules/@actions/github/lib/internal/utils.js
-var utils_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -31878,7 +31942,7 @@ function getProxyAgentDispatcher(destinationUrl) {
 }
 function getProxyFetch(destinationUrl) {
     const httpDispatcher = getProxyAgentDispatcher(destinationUrl);
-    const proxyFetch = (url, opts) => utils_awaiter(this, void 0, void 0, function* () {
+    const proxyFetch = (url, opts) => __awaiter(this, void 0, void 0, function* () {
         return (0,undici.fetch)(url, Object.assign(Object.assign({}, opts), { dispatcher: httpDispatcher }));
     });
     return proxyFetch;
@@ -32069,7 +32133,7 @@ var DEFAULTS = {
 };
 
 // pkg/dist-src/util/lowercase-keys.js
-function dist_bundle_lowercaseKeys(object) {
+function lowercaseKeys(object) {
   if (!object) {
     return {};
   }
@@ -32121,7 +32185,7 @@ function merge(defaults, route, options) {
   } else {
     options = Object.assign({}, route);
   }
-  options.headers = dist_bundle_lowercaseKeys(options.headers);
+  options.headers = lowercaseKeys(options.headers);
   removeUndefinedProperties(options);
   removeUndefinedProperties(options.headers);
   const mergedOptions = mergeDeep(defaults || {}, options);
@@ -35876,11 +35940,11 @@ function getOctokit(token, options, ...additionalPlugins) {
 function make(token, server = "github.com", prefix = "") {
     prefix = prefix.replace(/^\/+/, "")
     return {
-        https_url: `https://${server}/${prefix}`,
-        ssh_url: `git@${server}:${prefix}`,
-        auth_url: `https://x-access-token:${token}@${server}/${prefix}`,
-        section: `url.https://x-access-token:${token}@${server}/${prefix}`,
         auth_rule: `url.https://x-access-token:${token}@${server}/${prefix}.insteadof`,
+        auth_url: `https://x-access-token:${token}@${server}/${prefix}`,
+        https_url: `https://${server}/${prefix}`,
+        section: `url.https://x-access-token:${token}@${server}/${prefix}`,
+        ssh_url: `git@${server}:${prefix}`,
     }
 }
 
@@ -35890,41 +35954,13 @@ function make(token, server = "github.com", prefix = "") {
 
 
 
+
 // Authenticates by matching a URL of the form https://server/prefix*. If no matching URL is found, the provided
 // GitHub personal access token will not be used.
 
-// action main method
-async function run() {
-    // Grab our inputs
-    const server = getServer()
-    const token = getInput("github-token", { required: true })
-    const prefix = getInput("prefix").replace(/^\/+/, "")
-    const conf = make(token, server, prefix)
-
-    // Save the auth rule so we can remove it later
-    core_debug("Saving 'git_config_section' state")
-    saveState("git_config_section", conf.section)
-    info(
-        `Rewriting '${conf.https_url}' and '${conf.ssh_url}' to use token authentication`,
-    )
-
-    // Use git itself to update the configuration
-    const silent = isDebug() ? {} : { silent: true }
-    await exec_exec(
-        "git",
-        ["config", "--global", "--replace-all", conf.auth_rule, conf.https_url],
-        silent,
-    )
-    await exec_exec(
-        "git",
-        ["config", "--global", "--add", conf.auth_rule, conf.ssh_url],
-        silent,
-    )
-}
-
 // getServer returns the server domain from the server input or GitHub context
 function getServer() {
-    const server = getInput("server")
+    const server = core/* getInput */.V4("server")
     const serverUrl =
         github_context &&
         github_context.serverUrl &&
@@ -35932,11 +35968,174 @@ function getServer() {
     return (server || serverUrl).replace(/\/$/, "")
 }
 
-;// CONCATENATED MODULE: ./src/index.js
+// action main method
+async function run() {
+    // Grab our inputs
+    const server = getServer()
+    const token = core/* getInput */.V4("github-token", { required: true })
+    const prefix = core/* getInput */.V4("prefix").replace(/^\/+/, "")
+    const config = make(token, server, prefix)
+
+    // Save the auth rule so we can remove it later
+    core/* debug */.Yz("Saving 'git_config_section' state")
+    core/* saveState */.LZ("git_config_section", config.section)
+    core/* info */.pq(
+        `Rewriting '${config.https_url}' and '${config.ssh_url}' to use token authentication`,
+    )
+
+    // Use git itself to update the configuration
+    const silent = core/* isDebug */._o() ? {} : { silent: true }
+    await exec/* exec */.m(
+        "git",
+        [
+            "config",
+            "--global",
+            "--replace-all",
+            config.auth_rule,
+            config.https_url,
+        ],
+        silent,
+    )
+    await exec/* exec */.m(
+        "git",
+        ["config", "--global", "--add", config.auth_rule, config.ssh_url],
+        silent,
+    )
+}
 
 
+/***/ })
 
-run().catch((error) => setFailed(error.message))
-
+/******/ });
+/************************************************************************/
+/******/ // The module cache
+/******/ var __webpack_module_cache__ = {};
+/******/ 
+/******/ // The require function
+/******/ function __nccwpck_require__(moduleId) {
+/******/ 	// Check if module is in cache
+/******/ 	var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 	if (cachedModule !== undefined) {
+/******/ 		return cachedModule.exports;
+/******/ 	}
+/******/ 	// Create a new module (and put it into the cache)
+/******/ 	var module = __webpack_module_cache__[moduleId] = {
+/******/ 		// no module.id needed
+/******/ 		// no module.loaded needed
+/******/ 		exports: {}
+/******/ 	};
+/******/ 
+/******/ 	// Execute the module function
+/******/ 	var threw = true;
+/******/ 	try {
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __nccwpck_require__);
+/******/ 		threw = false;
+/******/ 	} finally {
+/******/ 		if(threw) delete __webpack_module_cache__[moduleId];
+/******/ 	}
+/******/ 
+/******/ 	// Return the exports of the module
+/******/ 	return module.exports;
+/******/ }
+/******/ 
+/************************************************************************/
+/******/ /* webpack/runtime/async module */
+/******/ (() => {
+/******/ 	var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
+/******/ 	var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
+/******/ 	var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
+/******/ 	var resolveQueue = (queue) => {
+/******/ 		if(queue && queue.d < 1) {
+/******/ 			queue.d = 1;
+/******/ 			queue.forEach((fn) => (fn.r--));
+/******/ 			queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
+/******/ 		}
+/******/ 	}
+/******/ 	var wrapDeps = (deps) => (deps.map((dep) => {
+/******/ 		if(dep !== null && typeof dep === "object") {
+/******/ 			if(dep[webpackQueues]) return dep;
+/******/ 			if(dep.then) {
+/******/ 				var queue = [];
+/******/ 				queue.d = 0;
+/******/ 				dep.then((r) => {
+/******/ 					obj[webpackExports] = r;
+/******/ 					resolveQueue(queue);
+/******/ 				}, (e) => {
+/******/ 					obj[webpackError] = e;
+/******/ 					resolveQueue(queue);
+/******/ 				});
+/******/ 				var obj = {};
+/******/ 				obj[webpackQueues] = (fn) => (fn(queue));
+/******/ 				return obj;
+/******/ 			}
+/******/ 		}
+/******/ 		var ret = {};
+/******/ 		ret[webpackQueues] = x => {};
+/******/ 		ret[webpackExports] = dep;
+/******/ 		return ret;
+/******/ 	}));
+/******/ 	__nccwpck_require__.a = (module, body, hasAwait) => {
+/******/ 		var queue;
+/******/ 		hasAwait && ((queue = []).d = -1);
+/******/ 		var depQueues = new Set();
+/******/ 		var exports = module.exports;
+/******/ 		var currentDeps;
+/******/ 		var outerResolve;
+/******/ 		var reject;
+/******/ 		var promise = new Promise((resolve, rej) => {
+/******/ 			reject = rej;
+/******/ 			outerResolve = resolve;
+/******/ 		});
+/******/ 		promise[webpackExports] = exports;
+/******/ 		promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
+/******/ 		module.exports = promise;
+/******/ 		body((deps) => {
+/******/ 			currentDeps = wrapDeps(deps);
+/******/ 			var fn;
+/******/ 			var getResult = () => (currentDeps.map((d) => {
+/******/ 				if(d[webpackError]) throw d[webpackError];
+/******/ 				return d[webpackExports];
+/******/ 			}))
+/******/ 			var promise = new Promise((resolve) => {
+/******/ 				fn = () => (resolve(getResult));
+/******/ 				fn.r = 0;
+/******/ 				var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
+/******/ 				currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
+/******/ 			});
+/******/ 			return fn.r ? promise : getResult();
+/******/ 		}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
+/******/ 		queue && queue.d < 0 && (queue.d = 0);
+/******/ 	};
+/******/ })();
+/******/ 
+/******/ /* webpack/runtime/define property getters */
+/******/ (() => {
+/******/ 	// define getter functions for harmony exports
+/******/ 	__nccwpck_require__.d = (exports, definition) => {
+/******/ 		for(var key in definition) {
+/******/ 			if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 				Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 			}
+/******/ 		}
+/******/ 	};
+/******/ })();
+/******/ 
+/******/ /* webpack/runtime/hasOwnProperty shorthand */
+/******/ (() => {
+/******/ 	__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ })();
+/******/ 
+/******/ /* webpack/runtime/compat */
+/******/ 
+/******/ if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = new URL('.', import.meta.url).pathname.slice(import.meta.url.match(/^file:\/\/\/\w:/) ? 1 : 0, -1) + "/";
+/******/ 
+/************************************************************************/
+/******/ 
+/******/ // startup
+/******/ // Load entry module and return exports
+/******/ // This entry module used 'module' so it can't be inlined
+/******/ var __webpack_exports__ = __nccwpck_require__(9722);
+/******/ __webpack_exports__ = await __webpack_exports__;
+/******/ 
 
 //# sourceMappingURL=index.js.map
