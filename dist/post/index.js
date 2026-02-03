@@ -30774,7 +30774,7 @@ function getIDToken(aud) {
  */
 
 //# sourceMappingURL=core.js.map
-;// CONCATENATED MODULE: ./remove.js
+;// CONCATENATED MODULE: ./src/cleanup.js
 
 
 
@@ -30794,6 +30794,10 @@ async function run() {
         },
     )
 }
+
+;// CONCATENATED MODULE: ./src/remove.js
+
+
 
 run().catch((error) => setFailed(error.message))
 
