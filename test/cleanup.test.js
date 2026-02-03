@@ -1,4 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from "vitest"
+import { beforeEach, describe, expect, it, vi } from "vitest"
+
 import { run } from "../src/cleanup.js"
 
 vi.mock("@actions/core", () => ({

@@ -1,4 +1,5 @@
-import { describe, it, expect } from "vitest"
+import { describe, expect, it } from "vitest"
+
 import * as rules from "../src/rules.js"
 
 const TOKEN = "example-token"
@@ -6,8 +7,8 @@ const SERVER = "example.com"
 
 describe("run", () => {
     it("works with just a token", () => {
-        const conf = rules.make(TOKEN)
-        expect(conf).toEqual({
+        const config = rules.make(TOKEN)
+        expect(config).toEqual({
             auth_rule: `url.https://x-access-token:${TOKEN}@github.com/.insteadof`,
             auth_url: `https://x-access-token:${TOKEN}@github.com/`,
             https_url: "https://github.com/",
@@ -17,8 +18,8 @@ describe("run", () => {
     })
 
     it("works with token and server", () => {
-        const conf = rules.make(TOKEN, SERVER)
-        expect(conf).toEqual({
+        const config = rules.make(TOKEN, SERVER)
+        expect(config).toEqual({
             auth_rule: `url.https://x-access-token:${TOKEN}@${SERVER}/.insteadof`,
             auth_url: `https://x-access-token:${TOKEN}@${SERVER}/`,
             https_url: `https://${SERVER}/`,
@@ -29,8 +30,8 @@ describe("run", () => {
 
     it("works with token and server and a prefix", () => {
         const PREFIX = "org"
-        const conf = rules.make(TOKEN, SERVER, PREFIX)
-        expect(conf).toEqual({
+        const config = rules.make(TOKEN, SERVER, PREFIX)
+        expect(config).toEqual({
             auth_rule: `url.https://x-access-token:${TOKEN}@${SERVER}/${PREFIX}.insteadof`,
             auth_url: `https://x-access-token:${TOKEN}@${SERVER}/${PREFIX}`,
             https_url: `https://${SERVER}/${PREFIX}`,
