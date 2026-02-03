@@ -1,5 +1,5 @@
-import core from "@actions/core"
-import exec from "@actions/exec"
+import * as core from "@actions/core"
+import * as exec from "@actions/exec"
 
 export const INPUT_TOKEN_ENV_VAR_NAME = "INPUT_GITHUB-TOKEN"
 
