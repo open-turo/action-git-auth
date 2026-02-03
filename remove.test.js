@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeAll } from "vitest"
 import * as rules from "./rules.js"
 import {
     INPUT_TOKEN_ENV_VAR_NAME,
