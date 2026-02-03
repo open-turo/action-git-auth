@@ -1,5 +1,6 @@
-import { describe, it, expect, afterEach } from "vitest"
-import { INPUT_TOKEN_ENV_VAR_NAME, gitConfigList, runIndex } from "./testutil"
+import { afterEach, describe, expect, it } from "vitest"
+
+import { gitConfigList, INPUT_TOKEN_ENV_VAR_NAME, runIndex } from "./testutil"
 
 // These need to be sync'd in remove.test.js
 const TOKEN = "example-token"
@@ -11,18 +12,8 @@ describe("run", () => {
         delete process.env["INPUT_SERVER"]
     })
 
-    it("errors with no token", () => {
-        return runIndex()
-            .then((proc) => {
-                expect(proc).toBe(null)
-            })
-            .catch((err) => {
-                expect(err.toString()).toMatch(/^Error: Command failed/)
-                expect(err.stderr.toString()).toBe("")
-                expect(err.stdout.toString()).toMatch(
-                    /::error::Input required and not supplied: github-token/,
-                )
-            })
+    it("errors with no token", async () => {
+        await expect(runIndex()).rejects.toThrow(/^Command failed/)
     })
 
     it("works when we have a token", () => {

@@ -4,7 +4,7 @@ import * as exec from "@actions/exec"
 // This removes the entire section of the git config with our URL rewrites
 export async function run() {
     const section = core.getState("git_config_section")
-    if (!section.match(/^url\./)) {
+    if (!/^url\./.test(section)) {
         core.setFailed("No git_config_section state found")
         return
     }

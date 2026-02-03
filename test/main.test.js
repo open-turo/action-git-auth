@@ -1,12 +1,13 @@
-import { describe, it, expect, vi, beforeEach } from "vitest"
-import { run, getServer } from "../src/main.js"
+import { beforeEach, describe, expect, it, vi } from "vitest"
+
+import { getServer, run } from "../src/main.js"
 
 vi.mock("@actions/core", () => ({
-    getInput: vi.fn(),
     debug: vi.fn(),
-    saveState: vi.fn(),
+    getInput: vi.fn(),
     info: vi.fn(),
     isDebug: vi.fn(),
+    saveState: vi.fn(),
     setFailed: vi.fn(),
 }))
 

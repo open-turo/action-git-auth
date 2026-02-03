@@ -1,8 +1,9 @@
-import { describe, it, expect, beforeAll } from "vitest"
+import { beforeAll, describe, expect, it } from "vitest"
+
 import * as rules from "../src/rules.js"
 import {
-    INPUT_TOKEN_ENV_VAR_NAME,
     gitConfigList,
+    INPUT_TOKEN_ENV_VAR_NAME,
     runIndex,
     runRemove,
 } from "./testutil"
@@ -38,10 +39,11 @@ describe("cleanup", () => {
         })
     })
 
-    it("runs without error", () => {
-        const conf = rules.make(TOKEN, SERVER)
-        process.env["STATE_git_config_section"] = conf.section
-        return runRemove()
+    it("runs without error", async () => {
+        const config = rules.make(TOKEN, SERVER)
+        process.env["STATE_git_config_section"] = config.section
+        const result = await runRemove()
+        expect(result.exitCode).toBe(0)
     })
 
     it("removed the rules we inserted", () => {
