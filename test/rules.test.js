@@ -39,4 +39,15 @@ describe("run", () => {
             ssh_url: `git@${SERVER}:${PREFIX}`,
         })
     })
+
+    it("strips leading slashes from prefix", () => {
+        const config = rules.make(TOKEN, SERVER, "///org/repo")
+        expect(config).toEqual({
+            auth_rule: `url.https://x-access-token:${TOKEN}@${SERVER}/org/repo.insteadof`,
+            auth_url: `https://x-access-token:${TOKEN}@${SERVER}/org/repo`,
+            https_url: `https://${SERVER}/org/repo`,
+            section: `url.https://x-access-token:${TOKEN}@${SERVER}/org/repo`,
+            ssh_url: `git@${SERVER}:org/repo`,
+        })
+    })
 })

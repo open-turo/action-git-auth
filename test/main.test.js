@@ -150,5 +150,42 @@ describe("main", () => {
 
             expect(result).toBe("github.com")
         })
+
+        it("handles missing github context gracefully", async () => {
+            // Temporarily override the mock to simulate missing context
+            const githubModule = await import("@actions/github")
+            const originalContext = githubModule.context
+            githubModule.context = undefined
+
+            core.getInput.mockImplementation((name) => {
+                if (name === "server") return "fallback.com"
+                return ""
+            })
+
+            const result = getServer()
+
+            expect(result).toBe("fallback.com")
+
+            // Restore
+            githubModule.context = originalContext
+        })
+
+        it("handles missing serverUrl in github context", async () => {
+            const githubModule = await import("@actions/github")
+            const originalContext = githubModule.context
+            githubModule.context = {}
+
+            core.getInput.mockImplementation((name) => {
+                if (name === "server") return "fallback.com"
+                return ""
+            })
+
+            const result = getServer()
+
+            expect(result).toBe("fallback.com")
+
+            // Restore
+            githubModule.context = originalContext
+        })
     })
 })
