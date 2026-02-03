@@ -4,6 +4,7 @@ export default defineConfig({
     test: {
         include: ["**/*.test.js"],
         exclude: ["node_modules/**"],
+        fileParallelism: false,
         sequence: {
             concurrent: false,
         },
