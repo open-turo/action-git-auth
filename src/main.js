@@ -7,7 +7,7 @@ import * as rules from "./rules.js"
 // GitHub personal access token will not be used.
 
 // action main method
-async function run() {
+export async function run() {
     // Grab our inputs
     const server = getServer()
     const token = core.getInput("github-token", { required: true })
@@ -36,7 +36,7 @@ async function run() {
 }
 
 // getServer returns the server domain from the server input or GitHub context
-function getServer() {
+export function getServer() {
     const server = core.getInput("server")
     const serverUrl =
         github.context &&
@@ -44,5 +44,3 @@ function getServer() {
         github.context.serverUrl.replace(/^\/\/|^.*?:(\/\/)?/, "")
     return (server || serverUrl).replace(/\/$/, "")
 }
-
-run().catch((error) => core.setFailed(error.message))
