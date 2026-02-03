@@ -28,7 +28,7 @@ export function gitConfigList() {
 // runRemove executes the post/remove task in a subshell. This does modify the underlying
 // host's git config but there's no other way to test it.
 export function runRemove() {
-    const removeJS = "remove.js"
+    const removeJS = "src/remove.js"
     let run = subprocess("node", [removeJS])
     if (process.env.RUNNER_DEBUG) {
         run = run.catch((err) => {
@@ -42,7 +42,7 @@ export function runRemove() {
 // runIndex executes main action in a subshell. This does modify the underlying
 // git config.
 export function runIndex() {
-    const indexJS = "index.js"
+    const indexJS = "src/index.js"
     let run = subprocess("node", [indexJS])
     if (process.env.RUNNER_DEBUG) {
         run = run.catch((err) => {
