@@ -35871,7 +35871,7 @@ function getOctokit(token, options, ...additionalPlugins) {
     return new GitHubWithPlugins(getOctokitOptions(token, options));
 }
 //# sourceMappingURL=github.js.map
-;// CONCATENATED MODULE: ./rules.js
+;// CONCATENATED MODULE: ./src/rules.js
 // make creates our URL fragments and rules for rewriting URLs for auth
 function make(token, server = "github.com", prefix = "") {
     prefix = prefix.replace(/^\/+/, "")
@@ -35884,7 +35884,7 @@ function make(token, server = "github.com", prefix = "") {
     }
 }
 
-;// CONCATENATED MODULE: ./index.js
+;// CONCATENATED MODULE: ./src/main.js
 
 
 
@@ -35931,6 +35931,10 @@ function getServer() {
         github_context.serverUrl.replace(/^\/\/|^.*?:(\/\/)?/, "")
     return (server || serverUrl).replace(/\/$/, "")
 }
+
+;// CONCATENATED MODULE: ./src/index.js
+
+
 
 run().catch((error) => setFailed(error.message))
 
