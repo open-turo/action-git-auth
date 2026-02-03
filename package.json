@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint",
     "prepare": "ncc build src/index.js -o dist/main --source-map --license licenses.txt && ncc build src/remove.js -o dist/post --source-map",
     "test": "vitest run",
     "all": "npm run lint && npm run prepare && npm run test"
@@ -31,12 +31,10 @@
     "@actions/github": "9.0.0"
   },
   "devDependencies": {
+    "@open-turo/eslint-config-typescript": "18.1.37",
     "@vitest/coverage-v8": "3.0.5",
-    "@babel/eslint-parser": "7.28.6",
-    "@eslint/js": "9.39.2",
     "@vercel/ncc": "0.38.4",
     "eslint": "9.39.2",
-    "eslint-config-prettier": "10.1.8",
     "globals": "17.3.0",
     "vitest": "3.0.5"
   },
