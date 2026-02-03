@@ -1,6 +1,6 @@
-import core from "@actions/core"
-import exec from "@actions/exec"
-import github from "@actions/github"
+import * as core from "@actions/core"
+import * as exec from "@actions/exec"
+import * as github from "@actions/github"
 import * as rules from "./rules.js"
 
 // Authenticates by matching a URL of the form https://server/prefix*. If no matching URL is found, the provided
