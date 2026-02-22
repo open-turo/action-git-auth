@@ -31,7 +31,7 @@
     "@actions/github": "9.0.0"
   },
   "devDependencies": {
-    "@open-turo/eslint-config-typescript": "18.1.37",
+    "@open-turo/eslint-config-typescript": "19.0.1",
     "@vitest/coverage-v8": "4.0.18",
     "@vercel/ncc": "0.38.4",
     "eslint": "9.39.2",
