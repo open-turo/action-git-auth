@@ -31,10 +31,10 @@
     "@actions/github": "9.0.0"
   },
   "devDependencies": {
-    "@open-turo/eslint-config-typescript": "19.0.1",
+    "@open-turo/eslint-config-typescript": "19.0.2",
     "@vitest/coverage-v8": "4.0.18",
     "@vercel/ncc": "0.38.4",
-    "eslint": "9.39.2",
+    "eslint": "9.39.3",
     "globals": "17.3.0",
     "vitest": "4.0.18"
   },
