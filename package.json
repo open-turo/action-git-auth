@@ -34,7 +34,7 @@
     "@open-turo/eslint-config-typescript": "23.2.1",
     "@vitest/coverage-v8": "4.1.11",
     "@vercel/ncc": "0.45.0",
-    "eslint": "9.39.5",
+    "eslint": "10.10.0",
     "globals": "17.11.0",
     "vitest": "4.1.11"
   },
